@@ -10,6 +10,11 @@
 <html>
 <head>
     <title>home page</title>
+    <script>
+        function del() {
+            return confirm("DELETE?")
+        }
+    </script>
 </head>
 <body>
 <c:if test="${sessionScope.username eq null}">
@@ -26,5 +31,22 @@ ${sessionScope.username}
     <input type="text" name="title" placeholder="TITLE"><br>
     <input type="submit" value="ADD">
 </form>
+<hr>
+<h2>BOOK LIST</h2>
+<table border="1">
+    <tr>
+        <th>INDEX</th>
+        <th>TITLE</th>
+        <th colspan="2">OPERATIONS</th>
+    </tr>
+    <c:forEach var="book" items="${sessionScope.books}" varStatus="vs">
+        <tr>
+            <td>${vs.count}</td>
+            <td>${book.title}</td>
+            <td><a href="${ctx}/book?action=search&id=${book.id}">MODIFY</a></td>
+            <td><a href="${ctx}/book?action=remove&id=${book.id}" onclick="return del()">REMOVE</a></td>
+        </tr>
+    </c:forEach>
+</table>
 </body>
 </html>
