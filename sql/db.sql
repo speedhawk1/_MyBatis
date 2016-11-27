@@ -1,0 +1,13 @@
+DROP DATABASE IF EXISTS test;
+CREATE DATABASE test;
+
+# user
+DROP TABLE IF EXISTS test.user;
+CREATE TABLE test.user (
+  id       INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(255),
+  password VARCHAR(255)
+);
+
+SELECT *
+FROM test.user;
