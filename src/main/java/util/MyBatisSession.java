@@ -12,6 +12,7 @@ import java.io.IOException;
  * Created by Administrator on 2016/11/27.
  */
 public class MyBatisSession {
+
     private static SqlSessionFactory sqlSessionFactory;
 
     private static SqlSessionFactory getSqlSessionFactory() {
@@ -26,7 +27,7 @@ public class MyBatisSession {
         return sqlSessionFactory;
     }
 
-    public static SqlSession getSqlSession(boolean autoCommit) {
+    public static SqlSession getSqlSession(boolean autoCommit) { // JDBC connection
         return getSqlSessionFactory().openSession(autoCommit);
     }
 }

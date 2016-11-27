@@ -8,5 +8,7 @@ CREATE TABLE test.user (
   password VARCHAR(255)
 );
 
+TRUNCATE TABLE test.user;
+
 SELECT *
 FROM test.user;

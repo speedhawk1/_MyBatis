@@ -13,11 +13,11 @@ public class UserService {
 
     private static int createUserViaXML() {
         try (SqlSession sqlSession = MyBatisSession.getSqlSession(true)) {
-            return sqlSession.insert("mapper.UserMapper.create", new User(null, "user1", "password1"));
+            return sqlSession.insert("user.create", new UserService());
         }
     }
 
-    private static int createUser() {
+    private static int createUser() { // CoC Convention over Configuration 约定优于配置
         try (SqlSession sqlSession = MyBatisSession.getSqlSession(true)) {
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             return userMapper.create(new User(null, "user2", "password2"));
@@ -25,7 +25,7 @@ public class UserService {
     }
 
     public static void main(String[] args) {
-        createUserViaXML();
-        createUser();
+        System.out.println(createUserViaXML());
+//        createUser();
     }
 }
